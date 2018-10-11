@@ -5,4 +5,4 @@ I have added code in files likes below
  - src\main\resources\templates\start.html
  
  Please let me know if you need more information on any files code.
- Also suggest me if my understanding is worng
+ Also suggest me if my understanding is not coorect.
