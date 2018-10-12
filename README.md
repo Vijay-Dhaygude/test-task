@@ -8,7 +8,7 @@
 8. In Goals enter spring-boot:run
 9. If any error, in console, it will displayed.
 10. If No Error, go to browser
-11. Hit url localhost:8080 Orlocalhost:8082
+11. Hit url localhost:8080 Or localhost:8082
 12. Welcome Page will displayed.
 13. Click on Data Table text(Hyperlink)
 14. It will navigate to table.html and all the service data will display on table with tab.
