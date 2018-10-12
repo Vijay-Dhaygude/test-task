@@ -1,13 +1,14 @@
-I have added code in files likes below
- - src\main\resources\static\js\controllers.js
- - src\main\resources\static\css\style.css
- - src\main\resources\static\js\partials\table.html
- - src\main\resources\templates\start.html
- 
- I have mapped rest api :- (https://jsonplaceholder.typicode.com/todos)
- 
- You provided this in example:(http://data.ssb.no/api/v0/dataset/1106) 
- but for me its showing some json validator error
- 
- Please let me know if you need more information on any files code.
- Also suggest me if my understanding is not coorect.
+1. Download the Folder portal-training.zip
+2. Extract into local
+3. Open Eclipse- > File -> Import - >Existing Maven Project
+4. Select the extract project as it is.
+5. Click Ok, and wait till maven dependecy gets download.
+6. Once Build successful. Right click on application folder(training)
+7. Select Run As-> Maven Build
+8. In Goals enter spring-boot:run
+9. If any error, in console, it will displayed.
+10. If No Error, go to browser
+11. Hit url localhost:8080
+12. Welcome Page will displayed.
+13. Click on Data Table text(Hyperlink)
+14. It will navigate to table.html and all the service data will display on table with tab.
