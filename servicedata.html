@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Portal Training
+</title>
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+
+<script type="text/javascript">
+var app = angular.module('serviceApp', []);
+app.controller('serviceCtrl', function ($scope, $http) {
+$http({
+method: 'GET',
+url: 'http://data.ssb.no/api/v0/dataset/1106.json?lang=no'
+}).then(function success(response) {
+
+$scope.myWelcome = response.data;
+
+$scope.statusval = response.status;
+
+$scope.statustext = response.statusText;
+
+$scope.headers = response.headers();
+
+}, function error(response) {
+
+});
+
+});
+
+</script>
+
+</head>
+
+<body>
+<div class="container">
+<div ng-app="serviceApp" ng-controller="serviceCtrl">
+<h4>Population changes In Norway. Municipalities, latest 9 quarters</h4>
+<h6>Information</h6>
+<p>Displayed Rest Service Data Here</p>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#home1" data-toggle="tab">{{myWelcome.dataset.dimension.Region.label}}</a>
+  </li>
+  <li><a href="#content2" data-toggle="tab">{{myWelcome.dataset.dimension.Tid.label}}</a>
+  </li>
+  <li><a href="#content3" data-toggle="tab">{{myWelcome.dataset.dimension.ContentsCode.label}}</a>
+  </li></a>
+  </li>
+</ul>
+
+
+<div class="tab-content tableDimention">
+ 	<div class="tab-pane fade in active" id="home1">
+      <table class="table table-condensed table-bordered table-striped volumes">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Verdi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in myWelcome.dataset.dimension.Region.category.label"> 
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="content2">
+      <table class="table table-condensed table-bordered table-striped volumes">
+        <thead>
+          <tr>
+           <th>Kode</th>
+            <th>Verdi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in myWelcome.dataset.dimension.Tid.category.label">
+            <td>{{key}}</td>
+            <td>{{value}}</td>            
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="content3">
+      <table class="table table-condensed table-bordered table-striped volumes">
+        <thead>
+          <tr>
+           <th>Kode</th>
+            <th>Verdi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in myWelcome.dataset.dimension.ContentsCode.category.label">
+              <td>{{key}}</td>
+            <td>{{value}}</td>  
+          </tr>        
+          
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+<h6>Service Details</h6>
+<p>StatusCode: {{statusval}}</p>
+
+<p>Status: {{statustext}}</p>
+
+<p>Response Headers: {{headers}}</p>
+
+</div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+});
+</script>
+</body>
+
+</html>
